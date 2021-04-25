@@ -1,0 +1,14 @@
+version: '2'
+services:
+  ned:
+    build: ./docker/
+    container_name: ned-debug
+    working_dir: "/src"
+    command: bash
+    volumes:
+      - "./test:/src/test/"
+      - "./frontend:/src/frontend/"
+      - "./go.mod:/src/go.mod"
+      - "./go.sum:/src/go.sum"
+      - "./ned.go:/src/ned.go"
+    tty: true

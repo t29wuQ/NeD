@@ -10,3 +10,9 @@ RUN wget https://apt.llvm.org/llvm.sh && \
     chmod +x llvm.sh && \
     ./llvm.sh 11
 
+RUN wget https://golang.org/dl/go1.15.7.linux-amd64.tar.gz && \
+    tar zxvf go1.15.7.linux-amd64.tar.gz && \
+    mv ./go/bin/go /usr/local/bin/go && \
+    mkdir -p /usr/local/go
+
+ENV GOPATH /.go
