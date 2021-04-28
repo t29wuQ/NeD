@@ -14,6 +14,6 @@ RUN wget https://golang.org/dl/go1.15.7.linux-amd64.tar.gz && \
     tar zxvf go1.15.7.linux-amd64.tar.gz && \
     mv ./go/bin/go /usr/local/bin/go && \
     mkdir -p /usr/local/go && \
-    mv /go/src/ /usr/local/go/
+    mv /go/src/ /go/pkg/ /usr/local/go/
 
 ENV GOPATH /.go
