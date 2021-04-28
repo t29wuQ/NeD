@@ -6,9 +6,5 @@ services:
     working_dir: "/src"
     command: bash
     volumes:
-      - "./test:/src/test/"
-      - "./frontend:/src/frontend/"
-      - "./go.mod:/src/go.mod"
-      - "./go.sum:/src/go.sum"
-      - "./ned.go:/src/ned.go"
+      - "./:/src"
     tty: true
