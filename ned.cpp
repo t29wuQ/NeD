@@ -4,6 +4,8 @@
 #include <llvm/IRReader/IRReader.h>
 #include <llvm/Support/SourceMgr.h>
 
+using namespace std;
+
 int main(int argc, char** argv) {
     if (argc < 2) {
         llvm::errs() << "Expected an argument - IR file name\n";
@@ -19,13 +21,16 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    auto func = module->getFunction("packet_in");
-    std::cout << "function name: " << func->getName().data() << std::endl;
-    for (auto &bb: *func) {
-        auto i = 0;
-        for (auto &instr: bb) {
-            std::cout << "%" << i << ": " << instr.getOpcodeName() << std::endl;
-            i++;
+    auto &funcs = module->getFunctionList();
+    for (auto &func : funcs) {
+        cout << func.getName().str() << endl;
+        for (auto &bb: func) {
+            auto i = 0;
+            for (auto &instr: bb) {
+                cout << "%" << i << ": " << instr.getOpcodeName() << endl;
+                // instr.dump();
+                i++;
+            }
         }
     }
 
