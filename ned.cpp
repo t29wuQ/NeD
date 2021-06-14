@@ -1,3 +1,4 @@
+#include "ned.h"
 #include <iostream>
 #include <llvm/IR/LLVMContext.h>
 #include <llvm/IR/Module.h>
@@ -25,12 +26,8 @@ int main(int argc, char** argv) {
     for (auto &func : funcs) {
         cout << func.getName().str() << endl;
         for (auto &bb: func) {
-            auto i = 0;
-            for (auto &instr: bb) {
-                cout << "%" << i << ": " << instr.getOpcodeName() << endl;
-                // instr.dump();
-                i++;
-            }
+            ned::Node *node = new ned::Node(bb);
+            node->show_bb();
         }
     }
 
